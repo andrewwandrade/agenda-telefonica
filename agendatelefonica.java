@@ -46,10 +46,10 @@ public class agenda{
         }
     }
 
-    public infocontato buscarNome(String nome){
+    public infocontato buscarPorNome(String nomeContato){
         for(int i=0; i<contatos.size(); i++){
             infocontato pessoa = contatos.get(i);
-            if(pessoa.nome.equalsIgnoreCase(nome)){
+            if(contato.nome.toLowerCase().contains(nomeContato.toLowerCase())){
                 return pessoa;
             }
         }
@@ -83,7 +83,7 @@ public class principal{
                     System.out.println("\nDigite o nome: ");
                     nome = sc.nextLine();
 
-                    System.out.println("\nDigite o telefone (Ex: 11 111111111): ");
+                    System.out.println("\nDigite o telefone (Formato 11 111111111): "); 
                     telefone = sc.nextLine();
 
                     System.out.println("\nDigite o endereco: ");
@@ -109,7 +109,7 @@ public class principal{
                     System.out.println("Digite o nome da pessoa que deseja procurar: ");
                     procurado = sc.nextLine();
 
-                    encontrado = agenda.buscarNome(procurado);
+                    encontrado = agenda.buscarPorNome(procurado);
                     if(encontrado == null){
                         System.out.println("\n[X] Contato nao encontrado!\n\n");
                     } else {
