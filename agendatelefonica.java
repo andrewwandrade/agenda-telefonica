@@ -30,8 +30,18 @@ public class agenda{
         contatos = new ArrayList<>();
     }
 
-    public void adicionarContato(infocontato pessoa){
-        contatos.add(contato);
+    public void adicionarContato(infocontato dados){
+
+        for(int i=0; i<contatos.size(); i++){
+            infocontato pessoa = contatos.get(i);
+            if(pessoa.nome.equalsIgnoreCase(dados.nome)){
+                alterarContato(dados);
+                return;
+            }
+        }
+
+        contatos.add(pessoa);
+        System.out.println("\nContato adicionado!\n\n");
     }
 
     public void removerContato(String nomeContato){
@@ -46,20 +56,28 @@ public class agenda{
         System.out.println("\n[X] Contato nao encontrado!\n\n");
     }
 
-    public void alterarContato(String nomeContato, String telContato, String endContato, String relContato){
+    public void alterarContato(String nomeContato){
 
         for(int i=0; i<contatos.size(); i++){
             infocontato pessoa = contatos.get(i);
             if(pessoa.nome.equalsIgnoreCase(nomeContato)){
-                pessoa.nome = nomeContato;
-                pessoa.telefone = telContato;
-                pessoa.endereco = endContato;
-                pessoa.relacao = relContato;
+
+                System.out.println("\nDigite o nome: ");
+                pessoa.nome = scan.nextLine();
+                
+                System.out.println("\nDigite o telefone (Formato 11 111111111): "); 
+                pessoa.telefone = scan.nextLine();
+
+                System.out.println("\nDigite o endereco: ");
+                pessoa.endereco = scan.nextLine();
+
+                System.out.println("\nDigite a relacao: ");
+                pessoa.relacao = scan.nextLine();
+
                 System.out.println("\nContato alterado!\n\n");
                 return;
             }
         }
-
         System.out.println("\n[X] Contato nao encontrado! Alteracao nao foi realizada.\n\n");
     }
 
@@ -91,7 +109,7 @@ public class principal{
 
     public static void main(String[] arg){
         agenda minhaAgenda = new agenda();
-        Scanner sc = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
         int opcao = 0;
 
         do{
@@ -105,28 +123,27 @@ public class principal{
                                 [6] Sair");
             System.out.println("\n\nDigite uma opcao: ");
 
-            opcao = sc.nextInt();
+            opcao = scan.nextInt();
 
             switch(opcao){
                 case 1:
                     String nome, telefone, endereco, relacao;
 
                     System.out.println("\nDigite o nome: ");
-                    nome = sc.nextLine();
+                    nome = scan.nextLine();
 
                     System.out.println("\nDigite o telefone (Formato 11 111111111): "); 
-                    telefone = sc.nextLine();
+                    telefone = scan.nextLine();
 
                     System.out.println("\nDigite o endereco: ");
-                    endereco = sc.nextLine();
+                    endereco = scan.nextLine();
 
                     System.out.println("\nDigite a relacao: ");
-                    relacao = sc.nextLine();
+                    relacao = scan.nextLine();
 
                     contato pessoa = new contato(nome, telefone, endereco, relacao);
                     agenda.adicionarContato(pessoa);
 
-                    System.out.println("\nContato adicionado!\n\n");
                     break;
 
                 case 2:
@@ -138,27 +155,33 @@ public class principal{
                     infocontato encontrado;
 
                     System.out.println("Digite o nome da pessoa que deseja procurar: ");
-                    procurado = sc.nextLine();
+                    procurado = scan.nextLine();
 
                     encontrado = agenda.buscarPorNome(procurado);
                     if(encontrado == null){
                         System.out.println("\n[X] Contato nao encontrado!\n\n");
                     } else {
+                        System.out.println("\nContato encontrado:\n\n");
                         encontrado.exibirDados();
                     }
 
                     break;
                 
+                case 4:
+                    String nome;
+
+                    System.out.println("\nDigite o nome: ");
+                    nome = scan.nextLine();
+
+                    agenda.alterarContato(nome);
+                    break;
+                
                 case 5:
 
                     break;
-                
-                case 6:
-
-                    break;
 
                 case 6:
-                    sc.close();
+                    scan.close();
                     System.out.println("\nPrograma encerrado!\n\n");
                     break;
 
