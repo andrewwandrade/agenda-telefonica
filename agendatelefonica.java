@@ -132,7 +132,9 @@ public class agenda{
 
     public void recuperarAgenda(){
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(nomeArquivo))) {
+        File arquivo = new File ("dadosDaAgenda.txt");
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(arquivo))) {
             String linhaDoArquivo;
             while ((linhaDoArquivo = reader.readLine()) != null) {
                 String[4] dados = linhaDoArquivo.split(";");
