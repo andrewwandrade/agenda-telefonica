@@ -162,14 +162,14 @@ public class principal{
         do{
 
             System.out.println("\n\n----------[AGENDA TELEFONICA]----------\n\n");
-            System.out.println("[1] Adicionar contato\n
-                                [2] Exibir todos os contatos\n
-                                [3] Procurar contato\n
-                                [4] Alterar informacoes do contato\n
-                                [5] Remover contato\n
-                                [6] Salvar agenda de contatos\n
-                                [7] Recuperar agenda de contatos\n
-                                [8] Sair");
+            System.out.println("[1] Adicionar contato\n" +
+                               "[2] Exibir todos os contatos\n" +
+                               "[3] Procurar contato\n" +
+                               "[4] Alterar informacoes do contato\n" +
+                               "[5] Remover contato\n" +
+                               "[6] Salvar agenda de contatos\n" +
+                               "[7] Recuperar agenda de contatos\n" +
+                               "[8] Sair");
 
             System.out.println("\n\nDigite uma opcao: ");
             opcao = scan.nextInt();
