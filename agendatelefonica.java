@@ -14,11 +14,12 @@ public class infocontato{
         this.relacao = relacao;
     }
 
-    public void exibirDados(){
-        System.out.println("Nome: " + nome);
-        System.out.println("Telefone: " + telefone);
-        System.out.println("Endereco: " + endereco);
-        System.out.println("Relacao: " + relacao);
+    @override
+    public string toString(){
+        return "Nome: " + nome + "\n" +
+               "Telefone: " + telefone + "\n" +
+               "Endereco: " + endereco + "\n" +
+               "Relacao: " + relacao + "\n";
     }
 
 }
@@ -88,7 +89,8 @@ public class agenda{
             System.out.println("Lista de Contatos:");
             for(int i=0; i<contatos.size(); i++){
                 infocontato pessoa = contatos.get(i);
-                pessoa.exibirDados();
+                String dados = pessoa.toString();
+                System.out.println(dados);
             }
         }
     }
@@ -162,7 +164,8 @@ public class principal{
                         System.out.println("\n[X] Contato nao encontrado!\n\n");
                     } else {
                         System.out.println("\nContato encontrado:\n\n");
-                        encontrado.exibirDados();
+                        String dados = encontrado.toString();
+                        System.out.println(dados);
                     }
 
                     break;
