@@ -39,18 +39,57 @@ public class agenda{
             infocontato pessoa = contatos.get(i);
             if(pessoa.nome.equalsIgnoreCase(nomeContato)){
 
-                System.out.println("\nDigite o nome: ");
-                pessoa.nome = scan.nextLine();
+                int op;
+
+                System.out.println("O que deseja alterar?\n\n" + 
+                                   "[1] Nome\n" + 
+                                   "[2] Telefone\n" + 
+                                   "[3] Endereco\n" + 
+                                   "[4] Relacao\n" + 
+                                   "[5] Todos os campos\n");
+
+                System.out.println("\nSelecione uma opcao: ");
+                op = scan.nextInt();    
+
+                switch(op){
+                    case 1:
+                        System.out.println("Digite o novo nome: ");
+                        pessoa.nome = scan.nextLine();
+                        break;
+
+                    case 2:
+                        System.out.println("\nDigite o novo telefone (Formato 11 111111111): "); 
+                        pessoa.telefone = scan.nextLine();
+                        break;
+
+                    case 3:
+                        System.out.println("\nDigite o novo endereco: ");
+                        pessoa.endereco = scan.nextLine();
+                        break;
+
+                    case 4:
+                        System.out.println("\nDigite a nova relacao: ");
+                        pessoa.relacao = scan.nextLine();
+                        break;
+
+                    case 5:
+                        System.out.println("\nDigite o novo nome: ");
+                        pessoa.nome = scan.nextLine();
                 
-                System.out.println("\nDigite o telefone (Formato 11 111111111): "); 
-                pessoa.telefone = scan.nextLine();
+                        System.out.println("\nDigite o novo telefone (Formato 11 111111111): "); 
+                        pessoa.telefone = scan.nextLine();
 
-                System.out.println("\nDigite o endereco: ");
-                pessoa.endereco = scan.nextLine();
+                        System.out.println("\nDigite o novo endereco: ");
+                        pessoa.endereco = scan.nextLine();
 
-                System.out.println("\nDigite a relacao: ");
-                pessoa.relacao = scan.nextLine();
+                        System.out.println("\nDigite a nova relacao: ");
+                        pessoa.relacao = scan.nextLine();
+                        break;
 
+                    default:
+                        System.out.println("\n[X] Opcao invalida!\n\n");
+                        break;
+                }
                 System.out.println("\nContato alterado!\n\n");
                 return;
             }
