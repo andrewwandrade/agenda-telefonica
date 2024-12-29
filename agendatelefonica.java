@@ -34,6 +34,35 @@ public class agenda{
         contatos.add(contato);
     }
 
+    public void removerContato(String nomeContato){
+        for(int i=0; i<contatos.size(); i++){
+            infocontato pessoa = contatos.get(i);
+            if(pessoa.nome.equalsIgnoreCase(nomeContato)){
+                contatos.remove(i);
+                System.out.println("\nContato removido!\n\n");
+                return;
+            }
+        }
+        System.out.println("\n[X] Contato nao encontrado!\n\n");
+    }
+
+    public void alterarContato(String nomeContato, String telContato, String endContato, String relContato){
+
+        for(int i=0; i<contatos.size(); i++){
+            infocontato pessoa = contatos.get(i);
+            if(pessoa.nome.equalsIgnoreCase(nomeContato)){
+                pessoa.nome = nomeContato;
+                pessoa.telefone = telContato;
+                pessoa.endereco = endContato;
+                pessoa.relacao = relContato;
+                System.out.println("\nContato alterado!\n\n");
+                return;
+            }
+        }
+
+        System.out.println("\n[X] Contato nao encontrado! Alteracao nao foi realizada.\n\n");
+    }
+
     public void exibirContatos(){
         if(contatos.isEmpty()){
             System.out.println("A agenda nao possui nenhum contato!");
@@ -71,7 +100,9 @@ public class principal{
             System.out.println("[1] Adicionar contato\n
                                 [2] Exibir todos os contatos\n
                                 [3] Procurar contato\n
-                                [4] Sair");
+                                [4] Alterar informacoes do contato\n
+                                [5] Remover contato\n
+                                [6] Sair");
             System.out.println("\n\nDigite uma opcao: ");
 
             opcao = sc.nextInt();
@@ -117,8 +148,16 @@ public class principal{
                     }
 
                     break;
+                
+                case 5:
 
-                case 4:
+                    break;
+                
+                case 6:
+
+                    break;
+
+                case 6:
                     sc.close();
                     System.out.println("\nPrograma encerrado!\n\n");
                     break;
@@ -128,7 +167,7 @@ public class principal{
                     break;
             }
 
-        }while(opcao != 4);
+        }while(opcao != 6);
 
     }
 
