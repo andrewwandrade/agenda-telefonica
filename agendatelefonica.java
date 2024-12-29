@@ -19,8 +19,8 @@ public class infocontato{
         this.relacao = relacao;
     }
 
-    @override
-    public string toString(){
+    @Override
+    public String toString(){
         return "Nome: " + nome + "\n" +
                "Telefone: " + telefone + "\n" +
                "Endereco: " + endereco + "\n" +
@@ -40,12 +40,12 @@ public class agenda{
         for(int i=0; i<contatos.size(); i++){
             infocontato pessoa = contatos.get(i);
             if(pessoa.nome.equalsIgnoreCase(dados.nome)){
-                alterarContato(dados);
+                alterarContato(dados.nome);
                 return;
             }
         }
 
-        contatos.add(pessoa);
+        contatos.add(dados);
         System.out.println("\nContato adicionado!\n\n");
     }
 
@@ -62,6 +62,8 @@ public class agenda{
     }
 
     public void alterarContato(String nomeContato){
+
+        Scanner scan = new Scanner(System.in);
 
         for(int i=0; i<contatos.size(); i++){
             infocontato pessoa = contatos.get(i);
@@ -101,7 +103,7 @@ public class agenda{
     public infocontato buscarPorNome(String nomeContato){
         for(int i=0; i<contatos.size(); i++){
             infocontato pessoa = contatos.get(i);
-            if(contato.nome.toLowerCase().contains(nomeContato.toLowerCase())){
+            if(pessoa.nome.toLowerCase().contains(nomeContato.toLowerCase())){
                 return pessoa;
             }
         }
@@ -137,7 +139,7 @@ public class agenda{
         try (BufferedReader reader = new BufferedReader(new FileReader(arquivo))) {
             String linhaDoArquivo;
             while ((linhaDoArquivo = reader.readLine()) != null) {
-                String[4] dados = linhaDoArquivo.split(";");
+                String[] dados = linhaDoArquivo.split(";");
                 infocontato contato = new infocontato(dados[0], dados[1], dados[2], dados[3]);
                 contatos.add(contato);
             }
@@ -171,6 +173,7 @@ public class principal{
 
             System.out.println("\n\nDigite uma opcao: ");
             opcao = scan.nextInt();
+            scan.nextLine();
 
             switch(opcao){
                 case 1:
@@ -189,12 +192,12 @@ public class principal{
                     relacao = scan.nextLine();
 
                     infocontato pessoa = new infocontato(nome, telefone, endereco, relacao);
-                    agenda.adicionarContato(pessoa);
+                    minhaAgenda.adicionarContato(pessoa);
 
                     break;
 
                 case 2:
-                    agenda.exibirContatos();
+                    minhaAgenda.exibirContatos();
                     break;
 
                 case 3:
@@ -204,7 +207,7 @@ public class principal{
                     System.out.println("Digite o nome da pessoa que deseja procurar: ");
                     procurado = scan.nextLine();
 
-                    encontrado = agenda.buscarPorNome(procurado);
+                    encontrado = minhaAgenda.buscarPorNome(procurado);
                     if(encontrado == null){
                         System.out.println("\n[X] Contato nao encontrado!\n\n");
                     } else {
@@ -215,27 +218,29 @@ public class principal{
                     break;
                 
                 case 4:
-                    String nome;
+                    String nome1;
 
                     System.out.println("\nDigite o nome do contato que deseja alterar os dados: ");
-                    nome = scan.nextLine();
+                    nome1 = scan.nextLine();
 
-                    agenda.alterarContato(nome);
+                    minhaAgenda.alterarContato(nome1);
                     break;
                 
                 case 5:
-                    String nome;
+                    String nome2;
 
                     System.out.println("Digite o nome do contato que deseja excluir: ");
-                    nome = scan.nextLine();
+                    nome2 = scan.nextLine();
 
-                    agenda.removerContato(nome);
+                    minhaAgenda.removerContato(nome2);
                     break;
 
                 case 6:
+                    minhaAgenda.salvarAgenda();
                     break;
 
                 case 7:
+                    minhaAgenda.recuperarAgenda();
                     break;
 
                 case 8:
