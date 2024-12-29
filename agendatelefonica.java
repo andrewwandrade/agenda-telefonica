@@ -21,7 +21,6 @@ public class infocontato{
                "Endereco: " + endereco + "\n" +
                "Relacao: " + relacao + "\n";
     }
-
 }
 
 public class agenda{
@@ -121,9 +120,11 @@ public class principal{
                                 [3] Procurar contato\n
                                 [4] Alterar informacoes do contato\n
                                 [5] Remover contato\n
-                                [6] Sair");
-            System.out.println("\n\nDigite uma opcao: ");
+                                [6] Salvar agenda de contatos\n
+                                [7] Recuperar agenda de contatos\n
+                                [8] Sair");
 
+            System.out.println("\n\nDigite uma opcao: ");
             opcao = scan.nextInt();
 
             switch(opcao){
@@ -171,17 +172,28 @@ public class principal{
                 case 4:
                     String nome;
 
-                    System.out.println("\nDigite o nome: ");
+                    System.out.println("\nDigite o nome do contato que deseja alterar os dados: ");
                     nome = scan.nextLine();
 
                     agenda.alterarContato(nome);
                     break;
                 
                 case 5:
+                    String nome;
 
+                    System.out.println("Digite o nome do contato que deseja excluir: ");
+                    nome = scan.nextLine();
+
+                    agenda.removerContato(nome);
                     break;
 
                 case 6:
+                    break;
+
+                case 7:
+                    break;
+
+                case 8:
                     scan.close();
                     System.out.println("\nPrograma encerrado!\n\n");
                     break;
@@ -191,7 +203,7 @@ public class principal{
                     break;
             }
 
-        }while(opcao != 6);
+        }while(opcao != 8);
 
     }
 
