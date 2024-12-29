@@ -89,8 +89,7 @@ public class agenda{
             System.out.println("Lista de Contatos:");
             for(int i=0; i<contatos.size(); i++){
                 infocontato pessoa = contatos.get(i);
-                String dados = pessoa.toString();
-                System.out.println(dados);
+                System.out.println(pessoa.toString());
             }
         }
     }
@@ -164,8 +163,7 @@ public class principal{
                         System.out.println("\n[X] Contato nao encontrado!\n\n");
                     } else {
                         System.out.println("\nContato encontrado:\n\n");
-                        String dados = encontrado.toString();
-                        System.out.println(dados);
+                        System.out.println(encontrado.toString());
                     }
 
                     break;
