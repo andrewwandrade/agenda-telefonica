@@ -1,5 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.*;
+/*
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;*/
 
 public class infocontato{
     String nome;
@@ -103,6 +108,44 @@ public class agenda{
         return null;
     }
 
+    public void salvarAgenda(){
+        File arquivo = new File ("dadosDaAgenda.txt");
+
+        try (BufferedWriter escritor = new BufferedWriter(new FileWriter(arquivo))) {
+
+            for(int i=0; i<contatos.size(); i++){
+                infocontato pessoa = contatos.get(i);
+                escritor.write(pessoa.nome + ";" + 
+                            pessoa.telefone + ";" + 
+                            pessoa.endereco + ";" + 
+                            pessoa.relacao);
+                escritor.newLine();
+            }
+
+            System.out.println("\nOs dados da agenda foram salvos!\n\n");
+
+        } catch (IOException erro) {
+            System.out.println("\n[X] Erro ao salvar os dados da agenda: " + erro.getMessage());
+        }
+
+    }
+
+    public void recuperarAgenda(){
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(nomeArquivo))) {
+            String linhaDoArquivo;
+            while ((linhaDoArquivo = reader.readLine()) != null) {
+                String[4] dados = linhaDoArquivo.split(";");
+                infocontato contato = new infocontato(dados[0], dados[1], dados[2], dados[3]);
+                contatos.add(contato);
+            }
+            System.out.println("\nOs dados da agenda foram carregados!\n\n");
+        } catch (IOException erro) {
+            System.out.println("\n[X] Erro ao carregar os dados da agenda: " + erro.getMessage());
+        }
+
+    }
+
 }
 
 public class principal{
@@ -143,7 +186,7 @@ public class principal{
                     System.out.println("\nDigite a relacao: ");
                     relacao = scan.nextLine();
 
-                    contato pessoa = new contato(nome, telefone, endereco, relacao);
+                    infocontato pessoa = new infocontato(nome, telefone, endereco, relacao);
                     agenda.adicionarContato(pessoa);
 
                     break;
