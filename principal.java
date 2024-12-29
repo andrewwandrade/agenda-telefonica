@@ -25,7 +25,7 @@ public class principal{
                                "[7] Recuperar agenda de contatos\n" +
                                "[8] Sair");
 
-            System.out.println("\n\nDigite uma opcao: ");
+            System.out.println("\n\nSelecione uma opcao: ");
             opcao = scan.nextInt();
 
             switch(opcao){
