@@ -11,6 +11,7 @@ public class agenda{
 
     public void adicionarContato(infocontato dados){
         
+        dados.nome = removerAcentos(dados.nome);
         Scanner scan = new Scanner(System.in);
 
         for(int i=0; i<contatos.size(); i++){
@@ -43,6 +44,7 @@ public class agenda{
 
     public void alterarContato(String nomeContato){
 
+        nomeContato = removerAcentos(nomeContato);
         Scanner scan = new Scanner(System.in);
 
         for(int i=0; i<contatos.size(); i++){
@@ -51,7 +53,7 @@ public class agenda{
 
                 int op;
 
-                System.out.println("O que deseja alterar?\n\n" + 
+                System.out.println("\nO que deseja alterar?\n\n" + 
                                    "[1] Nome\n" + 
                                    "[2] Telefone\n" + 
                                    "[3] Endereco\n" + 
@@ -66,10 +68,11 @@ public class agenda{
                     case 1:
                         System.out.println("Digite o novo nome: ");
                         pessoa.nome = scan.nextLine();
+                        pessoa.nome = removerAcentos(pessoa.nome);
                         break;
 
                     case 2:
-                        System.out.println("\nDigite o novo telefone (Formato 11 111111111): "); 
+                        System.out.println("\nDigite o novo telefone (11 digitos): "); 
                         pessoa.telefone = scan.nextLine();
                         break;
 
@@ -86,8 +89,9 @@ public class agenda{
                     case 5:
                         System.out.println("\nDigite o novo nome: ");
                         pessoa.nome = scan.nextLine();
+                        pessoa.nome = removerAcentos(pessoa.nome);
                 
-                        System.out.println("\nDigite o novo telefone (Formato 11 111111111): "); 
+                        System.out.println("\nDigite o novo telefone (11 digitos): "); 
                         pessoa.telefone = scan.nextLine();
 
                         System.out.println("\nDigite o novo endereco: ");
@@ -121,10 +125,24 @@ public class agenda{
         }
     }
 
+    public static String removerAcentos(String str) {
+        return str.replaceAll("[áàãâä]", "a")
+                .replaceAll("[éèêë]", "e")
+                .replaceAll("[íìîï]", "i")
+                .replaceAll("[óòôõö]", "o")
+                .replaceAll("[úùûü]", "u")
+                .replaceAll("[ç]", "c");
+    }
+
     public infocontato buscarPorNome(String nomeContato){
+        nomeContato = removerAcentos(nomeContato);  // Remover acentos do nome a ser buscado
+
         for(int i=0; i<contatos.size(); i++){
             infocontato pessoa = contatos.get(i);
-            if(pessoa.nome.toLowerCase().contains(nomeContato.toLowerCase())){
+            // Remover acentos também do nome do contato
+            String nomeContatoSalvo = removerAcentos(pessoa.nome);  
+
+            if(nomeContatoSalvo.toLowerCase().contains(nomeContato.toLowerCase())){
                 return pessoa;
             }
         }
@@ -169,6 +187,11 @@ public class agenda{
             System.out.println("\n[X] Erro ao carregar os dados da agenda: " + erro.getMessage());
         }
 
+    }
+
+    public void apagarTodosContatos() {
+        contatos.clear();
+        System.out.println("\nTodos os contatos foram excluidos!\n\n");
     }
 
 }
