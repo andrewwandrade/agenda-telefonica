@@ -10,11 +10,17 @@ public class agenda{
     }
 
     public void adicionarContato(infocontato dados){
+        
+        Scanner scan = new Scanner(System.in);
 
         for(int i=0; i<contatos.size(); i++){
             infocontato pessoa = contatos.get(i);
             if(pessoa.nome.equalsIgnoreCase(dados.nome)){
-                alterarContato(dados.nome);
+                pessoa.nome = dados.nome;
+                pessoa.telefone = dados.telefone;
+                pessoa.endereco = dados.endereco;
+                pessoa.relacao = dados.relacao;
+                System.out.println("\nContato existente! Os dados foram substituidos.\n");
                 return;
             }
         }
@@ -54,6 +60,7 @@ public class agenda{
 
                 System.out.println("\nSelecione uma opcao: ");
                 op = scan.nextInt();    
+                scan.nextLine();
 
                 switch(op){
                     case 1:
@@ -103,12 +110,13 @@ public class agenda{
 
     public void exibirContatos(){
         if(contatos.isEmpty()){
-            System.out.println("A agenda nao possui nenhum contato!");
+            System.out.println("\nA agenda nao possui nenhum contato!\n\n");
         } else {
-            System.out.println("Lista de Contatos:");
+            System.out.println("\nLista de Contatos:\n");
             for(int i=0; i<contatos.size(); i++){
                 infocontato pessoa = contatos.get(i);
                 System.out.println(pessoa.toString());
+                System.out.println("\n");
             }
         }
     }
