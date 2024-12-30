@@ -18,13 +18,14 @@ public class principal{
             System.out.println("\n----------[AGENDA TELEFONICA]----------\n\n");
             System.out.println("[1] Adicionar contato\n" +
                                "[2] Exibir todos os contatos\n" +
-                               "[3] Procurar contato\n" +
-                               "[4] Alterar informacoes do contato\n" +
-                               "[5] Remover contato\n" +
-                               "[6] Salvar agenda de contatos\n" +
-                               "[7] Recuperar agenda de contatos\n" +
-                               "[8] Apagar todos os contatos\n" +
-                               "[9] Sair");
+                               "[3] Buscar contato\n" +
+                               "[4] Filtrar dados de contatos\n" +
+                               "[5] Alterar informacoes do contato\n" +
+                               "[6] Remover contato\n" +
+                               "[7] Salvar agenda de contatos\n" +
+                               "[8] Recuperar agenda de contatos\n" +
+                               "[9] Apagar todos os contatos\n" +
+                               "[10] Sair");
 
             System.out.println("\n\nSelecione uma opcao: ");
             opcao = scan.nextInt();
@@ -40,7 +41,7 @@ public class principal{
                     System.out.println("\nDigite o telefone (11 digitos): "); 
                     telefone = scan.nextLine();
 
-                    System.out.println("\nDigite o endereco: ");
+                    System.out.println("\nDigite o endereco (Logradouro, Numero): ");
                     endereco = scan.nextLine();
 
                     System.out.println("\nDigite a relacao: ");
@@ -72,8 +73,56 @@ public class principal{
                     }
 
                     break;
-                
+
                 case 4:
+
+                    int opcaoCase4;
+
+                    System.out.println("\nSeleciona o filtro desejado:\n");
+                    System.out.println("[1] Telefone\n" +
+                                       "[2] Endereco\n" +
+                                       "[3] Relacao");
+                    
+                    System.out.println("\nDigite uma opcao: ");
+                    opcaoCase4 = scan.nextInt();
+                    scan.nextLine();
+
+                    switch(opcaoCase4){
+                        case 1:
+                            String telFiltro;
+
+                            System.out.print("\nDigite o telefone: ");
+                            telFiltro = scan.nextLine();
+                            minhaAgenda.buscaAvancada(telFiltro, opcaoCase4);
+
+                            break;
+
+                        case 2:
+                            String enderecoFiltro;
+
+                            System.out.print("\nDigite o endereco (Sem o numero da casa): ");
+                            enderecoFiltro = scan.nextLine();
+                            minhaAgenda.buscaAvancada(enderecoFiltro, opcaoCase4);
+
+                            break;
+
+                        case 3:
+                            String relacaoFiltro;
+
+                            System.out.print("\nDigite a relacao: ");
+                            relacaoFiltro = scan.nextLine();
+                            minhaAgenda.buscaAvancada(relacaoFiltro, opcaoCase4);
+
+                            break;
+
+                        default:
+                            System.out.println("\n[X] Digite uma opcao valida!\n");
+                            break;
+                    }
+
+                    break;
+                
+                case 5:
                     String nome1;
 
                     System.out.println("\nATENCAO: Caso o nome possua acento, digite-o sem acento e de forma completa!");
@@ -83,7 +132,7 @@ public class principal{
                     minhaAgenda.alterarContato(nome1);
                     break;
                 
-                case 5:
+                case 6:
                     String nome2;
 
                     System.out.println("Digite o nome do contato que deseja excluir: ");
@@ -92,20 +141,20 @@ public class principal{
                     minhaAgenda.removerContato(nome2);
                     break;
 
-                case 6:
+                case 7:
                     minhaAgenda.salvarAgenda();
                     break;
 
-                case 7:
+                case 8:
                     System.out.println("\nAtencao: O arquivo de dados precisa ter o nome " + "dadosDaAgenda.txt!");
                     minhaAgenda.recuperarAgenda();
                     break;
                 
-                case 8:
+                case 9:
                     minhaAgenda.apagarTodosContatos();
                     break;
 
-                case 9:
+                case 10:
                     System.out.println("\nPrograma encerrado!\n\n");
                     break;
 
@@ -114,7 +163,7 @@ public class principal{
                     break;
             }
 
-        }while(opcao != 9);
+        }while(opcao != 10);
 
         scan.close();
     
