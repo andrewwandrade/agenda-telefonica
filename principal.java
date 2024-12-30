@@ -13,9 +13,13 @@ public class principal{
         Scanner scan = new Scanner(System.in);
         int opcao = 0;
 
+        minhaAgenda.adicionarContato(new infocontato("João", "11987654321", "Rua A, 123", "Amigo"));
+        minhaAgenda.adicionarContato(new infocontato("Maria", "21987654321", "Rua B, 456", "Familia"));
+        minhaAgenda.adicionarContato(new infocontato("Carlos", "31987654321", "Rua C, 789", "Colega"));
+        
         do{
 
-            System.out.println("\n\n----------[AGENDA TELEFONICA]----------\n\n");
+            System.out.println("\n----------[AGENDA TELEFONICA]----------\n\n");
             System.out.println("[1] Adicionar contato\n" +
                                "[2] Exibir todos os contatos\n" +
                                "[3] Procurar contato\n" +
@@ -27,6 +31,7 @@ public class principal{
 
             System.out.println("\n\nSelecione uma opcao: ");
             opcao = scan.nextInt();
+            scan.nextLine();
 
             switch(opcao){
                 case 1:
@@ -45,8 +50,8 @@ public class principal{
                     relacao = scan.nextLine();
 
                     infocontato pessoa = new infocontato(nome, telefone, endereco, relacao);
-                    minhaAgenda.adicionarContato(pessoa);
 
+                    minhaAgenda.adicionarContato(pessoa);
                     break;
 
                 case 2:
@@ -57,7 +62,7 @@ public class principal{
                     String procurado;
                     infocontato encontrado;
 
-                    System.out.println("Digite o nome da pessoa que deseja procurar: ");
+                    System.out.println("\nDigite o nome da pessoa que deseja procurar: ");
                     procurado = scan.nextLine();
 
                     encontrado = minhaAgenda.buscarPorNome(procurado);
