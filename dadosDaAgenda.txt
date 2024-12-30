@@ -1,3 +1,6 @@
 Joao Paulo;11987654321;Rua A, 123;Amigo
 Maria Eduarda;21987654321;Rua B, 456;Familia
 Carlos;31987654321;Rua C, 789;Colega
+Lurdes;21987654321;Rua B, 74;Colega
+Camila;32541965874;Rua Rio das Ostras, 14; Trabalho
+Katia;95123589654;Rua Campo da Vista, 85; Trabalho
