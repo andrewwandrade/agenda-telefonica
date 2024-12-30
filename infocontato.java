@@ -11,10 +11,18 @@ public class infocontato{
         this.relacao = relacao;
     }
 
+    public String formatarTelefone(String telefone){
+        if(telefone.length() == 11){
+            return "(" + telefone.substring(0,2) + ")" + " " + telefone.substring(2,7) + "-" + telefone.substring(7);
+        } else {
+            return telefone;
+        }
+    }
+
     @Override
     public String toString(){
         return "Nome: " + nome + "\n" +
-               "Telefone: " + telefone + "\n" +
+               "Telefone: " + formatarTelefone(telefone) + "\n" +
                "Endereco: " + endereco + "\n" +
                "Relacao: " + relacao + "\n";
     }
