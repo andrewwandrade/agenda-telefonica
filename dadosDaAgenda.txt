@@ -1,0 +1,3 @@
+Joao Paulo;11987654321;Rua A, 123;Amigo
+Maria Eduarda;21987654321;Rua B, 456;Familia
+Carlos;31987654321;Rua C, 789;Colega
