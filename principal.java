@@ -1,10 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.*;
-/*
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;*/
 
 public class principal{
 
@@ -12,11 +8,11 @@ public class principal{
         agenda minhaAgenda = new agenda();
         Scanner scan = new Scanner(System.in);
         int opcao = 0;
+/*
+        minhaAgenda.adicionarContato(new infocontato("João Paulo", "11987654321", "Rua A, 123", "Amigo"));
+        minhaAgenda.adicionarContato(new infocontato("Maria Eduarda", "21987654321", "Rua B, 456", "Familia"));
+        minhaAgenda.adicionarContato(new infocontato("Carlos", "31987654321", "Rua C, 789", "Colega"));*/
 
-        minhaAgenda.adicionarContato(new infocontato("João", "11987654321", "Rua A, 123", "Amigo"));
-        minhaAgenda.adicionarContato(new infocontato("Maria", "21987654321", "Rua B, 456", "Familia"));
-        minhaAgenda.adicionarContato(new infocontato("Carlos", "31987654321", "Rua C, 789", "Colega"));
-        
         do{
 
             System.out.println("\n----------[AGENDA TELEFONICA]----------\n\n");
@@ -27,7 +23,8 @@ public class principal{
                                "[5] Remover contato\n" +
                                "[6] Salvar agenda de contatos\n" +
                                "[7] Recuperar agenda de contatos\n" +
-                               "[8] Sair");
+                               "[8] Apagar todos os contatos\n" +
+                               "[9] Sair");
 
             System.out.println("\n\nSelecione uma opcao: ");
             opcao = scan.nextInt();
@@ -40,7 +37,7 @@ public class principal{
                     System.out.println("\nDigite o nome: ");
                     nome = scan.nextLine();
 
-                    System.out.println("\nDigite o telefone (Formato 11 111111111): "); 
+                    System.out.println("\nDigite o telefone (11 digitos): "); 
                     telefone = scan.nextLine();
 
                     System.out.println("\nDigite o endereco: ");
@@ -62,7 +59,8 @@ public class principal{
                     String procurado;
                     infocontato encontrado;
 
-                    System.out.println("\nDigite o nome da pessoa que deseja procurar: ");
+                    System.out.println("\nATENCAO: Caso o nome possua acento, digite-o sem acento!");
+                    System.out.println("Digite o nome da pessoa que deseja procurar: ");
                     procurado = scan.nextLine();
 
                     encontrado = minhaAgenda.buscarPorNome(procurado);
@@ -78,6 +76,7 @@ public class principal{
                 case 4:
                     String nome1;
 
+                    System.out.println("\nATENCAO: Caso o nome possua acento, digite-o sem acento e de forma completa!");
                     System.out.println("\nDigite o nome do contato que deseja alterar os dados: ");
                     nome1 = scan.nextLine();
 
@@ -98,10 +97,15 @@ public class principal{
                     break;
 
                 case 7:
+                    System.out.println("\nAtencao: O arquivo de dados precisa ter o nome " + "dadosDaAgenda.txt!");
                     minhaAgenda.recuperarAgenda();
                     break;
-
+                
                 case 8:
+                    minhaAgenda.apagarTodosContatos();
+                    break;
+
+                case 9:
                     System.out.println("\nPrograma encerrado!\n\n");
                     break;
 
@@ -110,7 +114,7 @@ public class principal{
                     break;
             }
 
-        }while(opcao != 8);
+        }while(opcao != 9);
 
         scan.close();
     
