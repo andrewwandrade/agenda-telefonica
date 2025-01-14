@@ -1,8 +1,8 @@
 # Agenda Telefonica - Trabalho 1
-Segundo trabalho de implementação de Paradigmas de Programação.
+- Segundo trabalho de implementação de Paradigmas de Programação.
 
 ## Objetivo
-Implementar uma agenda telefônica utilizando uma lista ou um vetor de objetos. Ela deve permitir adicionar buscar, editar ou remover os contatos. Além disso, também deve ser possível salvar e recuperar dados da agenda de um arquivo.
+- Implementar uma agenda telefônica utilizando uma lista ou um vetor de objetos. Ela deve permitir adicionar buscar, editar ou remover os contatos. Além disso, também deve ser possível salvar e recuperar dados da agenda de um arquivo.
 
 ## Estruturação de Arquivos
 
