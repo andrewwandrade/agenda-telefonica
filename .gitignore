@@ -1,0 +1,5 @@
+# Ignorar arquivos .class (são os arquivos compilados)
+*.class
+
+# Ignorar diretório de binários (que armazena os arquivos .class)
+/bin/
