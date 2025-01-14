@@ -79,9 +79,8 @@ public class principal{
                     int opcaoCase4;
 
                     System.out.println("\nSeleciona o filtro desejado:\n");
-                    System.out.println("[1] Telefone\n" +
-                                       "[2] Endereco\n" +
-                                       "[3] Relacao");
+                    System.out.println("[1] Endereco\n" +
+                                       "[2] Relacao");
                     
                     System.out.println("\nDigite uma opcao: ");
                     opcaoCase4 = scan.nextInt();
@@ -89,15 +88,6 @@ public class principal{
 
                     switch(opcaoCase4){
                         case 1:
-                            String telFiltro;
-
-                            System.out.print("\nDigite o telefone: ");
-                            telFiltro = scan.nextLine();
-                            minhaAgenda.buscaAvancada(telFiltro, opcaoCase4);
-
-                            break;
-
-                        case 2:
                             String enderecoFiltro;
 
                             System.out.print("\nDigite o endereco (Sem o numero da casa): ");
@@ -106,7 +96,7 @@ public class principal{
 
                             break;
 
-                        case 3:
+                        case 2:
                             String relacaoFiltro;
 
                             System.out.print("\nDigite a relacao: ");

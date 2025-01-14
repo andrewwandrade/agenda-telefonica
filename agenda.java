@@ -150,19 +150,13 @@ public class agenda{
     }
 
     public void buscaAvancada(String filtro, int opcaoBusca){
-        // 1 - telefone, 2 - endereco, 3 - relacao
+        // 1 - endereco, 2 - relacao
 
         for(int i=0; i<contatos.size(); i++){
             infocontato pessoa = contatos.get(i);
 
             switch(opcaoBusca){
                 case 1:
-                    if(pessoa.telefone.contains(filtro)){
-                        System.out.println(pessoa.toString());
-                    }
-                    break;
-
-                case 2:
                     String enderecoContato = pessoa.endereco.split(",")[0].trim();
                     if(enderecoContato.toLowerCase().contains(filtro.toLowerCase())){
                         System.out.println(pessoa.toString());
@@ -170,7 +164,7 @@ public class agenda{
                     }
                     break;
 
-                case 3:
+                case 2:
                     if(pessoa.relacao.toLowerCase().contains(filtro.toLowerCase())){
                         System.out.println(pessoa.toString());
                         System.out.println("\n");
