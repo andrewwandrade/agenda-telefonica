@@ -8,10 +8,6 @@ public class principal{
         agenda minhaAgenda = new agenda();
         Scanner scan = new Scanner(System.in);
         int opcao = 0;
-/*
-        minhaAgenda.adicionarContato(new infocontato("João Paulo", "11987654321", "Rua A, 123", "Amigo"));
-        minhaAgenda.adicionarContato(new infocontato("Maria Eduarda", "21987654321", "Rua B, 456", "Familia"));
-        minhaAgenda.adicionarContato(new infocontato("Carlos", "31987654321", "Rua C, 789", "Colega"));*/
 
         do{
 

@@ -1,8 +1,8 @@
 public class infocontato{
-    String nome;
-    String telefone;
-    String endereco;
-    String relacao;
+    private String nome;
+    private String telefone;
+    private String endereco;
+    private String relacao;
 
     public infocontato(String nome, String telefone, String endereco, String relacao){
         this.nome = nome;
@@ -26,4 +26,37 @@ public class infocontato{
                "Endereco: " + endereco + "\n" +
                "Relacao: " + relacao + "\n";
     }
+
+    public void setNome(String nome){
+        this.nome = nome;
+    }
+
+    public void setTelefone(String telefone){
+        this.telefone = telefone;
+    }
+
+    public void setEndereco(String endereco){
+        this.endereco = endereco;
+    }
+
+    public void setRelacao(String relacao){
+        this.relacao = relacao;
+    }
+
+    public String getNome(){
+        return this.nome;
+    }
+
+    public String getTelefone(){
+        return this.telefone;
+    }
+
+    public String getEndereco(){
+        return this.endereco;
+    }
+
+    public String getRelacao(){
+        return this.relacao;
+    }
+
 }

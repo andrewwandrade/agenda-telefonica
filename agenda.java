@@ -11,16 +11,16 @@ public class agenda{
 
     public void adicionarContato(infocontato dados){
         
-        dados.nome = removerAcentos(dados.nome);
+        dados.setNome(removerAcentos(dados.getNome()));
         Scanner scan = new Scanner(System.in);
 
         for(int i=0; i<contatos.size(); i++){
             infocontato pessoa = contatos.get(i);
-            if(pessoa.nome.equalsIgnoreCase(dados.nome)){
-                pessoa.nome = dados.nome;
-                pessoa.telefone = dados.telefone;
-                pessoa.endereco = dados.endereco;
-                pessoa.relacao = dados.relacao;
+            if(pessoa.getNome().equalsIgnoreCase(dados.getNome())){
+                pessoa.setNome(dados.getNome());
+                pessoa.setTelefone(dados.getTelefone());
+                pessoa.setEndereco(dados.getEndereco());
+                pessoa.setRelacao(dados.getRelacao());
                 System.out.println("\nContato existente! Os dados foram substituidos.\n");
                 return;
             }
@@ -33,7 +33,7 @@ public class agenda{
     public void removerContato(String nomeContato){
         for(int i=0; i<contatos.size(); i++){
             infocontato pessoa = contatos.get(i);
-            if(pessoa.nome.equalsIgnoreCase(nomeContato)){
+            if(pessoa.getNome().equalsIgnoreCase(nomeContato)){
                 contatos.remove(i);
                 System.out.println("\nContato removido!\n\n");
                 return;
@@ -49,7 +49,7 @@ public class agenda{
 
         for(int i=0; i<contatos.size(); i++){
             infocontato pessoa = contatos.get(i);
-            if(pessoa.nome.equalsIgnoreCase(nomeContato)){
+            if(pessoa.getNome().equalsIgnoreCase(nomeContato)){
 
                 int op;
 
@@ -67,38 +67,38 @@ public class agenda{
                 switch(op){
                     case 1:
                         System.out.println("Digite o novo nome: ");
-                        pessoa.nome = scan.nextLine();
-                        pessoa.nome = removerAcentos(pessoa.nome);
+                        pessoa.setNome(scan.nextLine());
+                        pessoa.setNome(removerAcentos(pessoa.getNome()));
                         break;
 
                     case 2:
                         System.out.println("\nDigite o novo telefone (11 digitos): "); 
-                        pessoa.telefone = scan.nextLine();
+                        pessoa.setTelefone(scan.nextLine());
                         break;
 
                     case 3:
                         System.out.println("\nDigite o novo endereco: ");
-                        pessoa.endereco = scan.nextLine();
+                        pessoa.setEndereco(scan.nextLine());
                         break;
 
                     case 4:
                         System.out.println("\nDigite a nova relacao: ");
-                        pessoa.relacao = scan.nextLine();
+                        pessoa.setRelacao(scan.nextLine());
                         break;
 
                     case 5:
                         System.out.println("\nDigite o novo nome: ");
-                        pessoa.nome = scan.nextLine();
-                        pessoa.nome = removerAcentos(pessoa.nome);
+                        pessoa.setNome(scan.nextLine());
+                        pessoa.setNome(removerAcentos(pessoa.getNome()));
                 
                         System.out.println("\nDigite o novo telefone (11 digitos): "); 
-                        pessoa.telefone = scan.nextLine();
+                        pessoa.setTelefone(scan.nextLine());
 
                         System.out.println("\nDigite o novo endereco: ");
-                        pessoa.endereco = scan.nextLine();
+                        pessoa.setEndereco(scan.nextLine());
 
                         System.out.println("\nDigite a nova relacao: ");
-                        pessoa.relacao = scan.nextLine();
+                        pessoa.setRelacao(scan.nextLine());
                         break;
 
                     default:
@@ -122,16 +122,16 @@ public class agenda{
                 System.out.println(pessoa.toString());
                 System.out.println("\n");
             }
-        }
+        }    
     }
 
-    public static String removerAcentos(String str) {
+    public static String removerAcentos(String str){
         return str.replaceAll("[áàãâä]", "a")
-                .replaceAll("[éèêë]", "e")
-                .replaceAll("[íìîï]", "i")
-                .replaceAll("[óòôõö]", "o")
-                .replaceAll("[úùûü]", "u")
-                .replaceAll("[ç]", "c");
+                  .replaceAll("[éèêë]", "e")
+                  .replaceAll("[íìîï]", "i")
+                  .replaceAll("[óòôõö]", "o")
+                  .replaceAll("[úùûü]", "u")
+                  .replaceAll("[ç]", "c");
     }
 
     public infocontato buscarPorNome(String nomeContato){
@@ -140,7 +140,7 @@ public class agenda{
         for(int i=0; i<contatos.size(); i++){
             infocontato pessoa = contatos.get(i);
             // Remover acentos também do nome do contato
-            String nomeContatoSalvo = removerAcentos(pessoa.nome);  
+            String nomeContatoSalvo = removerAcentos(pessoa.getNome());  
 
             if(nomeContatoSalvo.toLowerCase().contains(nomeContato.toLowerCase())){
                 return pessoa;
@@ -157,7 +157,7 @@ public class agenda{
 
             switch(opcaoBusca){
                 case 1:
-                    String enderecoContato = pessoa.endereco.split(",")[0].trim();
+                    String enderecoContato = pessoa.getEndereco().split(",")[0].trim();
                     if(enderecoContato.toLowerCase().contains(filtro.toLowerCase())){
                         System.out.println(pessoa.toString());
                         System.out.println("\n");
@@ -165,7 +165,7 @@ public class agenda{
                     break;
 
                 case 2:
-                    if(pessoa.relacao.toLowerCase().contains(filtro.toLowerCase())){
+                    if(pessoa.getRelacao().toLowerCase().contains(filtro.toLowerCase())){
                         System.out.println(pessoa.toString());
                         System.out.println("\n");
                     }
@@ -185,20 +185,20 @@ public class agenda{
     public void salvarAgenda(){
         File arquivo = new File ("dadosDaAgenda.txt");
 
-        try (BufferedWriter escritor = new BufferedWriter(new FileWriter(arquivo))) {
+        try(BufferedWriter escritor = new BufferedWriter(new FileWriter(arquivo))){
 
             for(int i=0; i<contatos.size(); i++){
                 infocontato pessoa = contatos.get(i);
-                escritor.write(pessoa.nome + ";" + 
-                            pessoa.telefone + ";" + 
-                            pessoa.endereco + ";" + 
-                            pessoa.relacao);
+                escritor.write(pessoa.getNome() + ";" + 
+                            pessoa.getTelefone() + ";" + 
+                            pessoa.getEndereco() + ";" + 
+                            pessoa.getRelacao());
                 escritor.newLine();
             }
 
             System.out.println("\nOs dados da agenda foram salvos!\n\n");
 
-        } catch (IOException erro) {
+        } catch(IOException erro) {
             System.out.println("\n[X] Erro ao salvar os dados da agenda: " + erro.getMessage());
         }
 
@@ -208,21 +208,21 @@ public class agenda{
 
         File arquivo = new File ("dadosDaAgenda.txt");
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(arquivo))) {
+        try(BufferedReader reader = new BufferedReader(new FileReader(arquivo))){
             String linhaDoArquivo;
-            while ((linhaDoArquivo = reader.readLine()) != null) {
+            while((linhaDoArquivo = reader.readLine()) != null){
                 String[] dados = linhaDoArquivo.split(";");
                 infocontato contato = new infocontato(dados[0], dados[1], dados[2], dados[3]);
                 contatos.add(contato);
             }
             System.out.println("\nOs dados da agenda foram carregados!\n\n");
-        } catch (IOException erro) {
+        } catch(IOException erro) {
             System.out.println("\n[X] Erro ao carregar os dados da agenda: " + erro.getMessage());
         }
 
     }
 
-    public void apagarTodosContatos() {
+    public void apagarTodosContatos(){
         contatos.clear();
         System.out.println("\nTodos os contatos foram excluidos!\n\n");
     }
