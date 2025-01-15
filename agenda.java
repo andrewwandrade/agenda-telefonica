@@ -159,6 +159,7 @@ public class agenda{
                 case 1:
                     String enderecoContato = pessoa.getEndereco().split(",")[0].trim();
                     if(enderecoContato.toLowerCase().contains(filtro.toLowerCase())){
+                        System.out.println("\n");
                         System.out.println(pessoa.toString());
                         System.out.println("\n");
                     }
@@ -166,6 +167,7 @@ public class agenda{
 
                 case 2:
                     if(pessoa.getRelacao().toLowerCase().contains(filtro.toLowerCase())){
+                        System.out.println("\n");
                         System.out.println(pessoa.toString());
                         System.out.println("\n");
                     }
@@ -178,7 +180,7 @@ public class agenda{
 
         }
 
-        System.out.println("\nBusca finalizada!\n");
+        System.out.println("Busca finalizada!\n");
 
     }
 

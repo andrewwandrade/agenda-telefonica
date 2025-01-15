@@ -121,7 +121,7 @@ public class principal{
                 case 6:
                     String nome2;
 
-                    System.out.println("Digite o nome do contato que deseja excluir: ");
+                    System.out.println("\nDigite o nome do contato que deseja excluir: ");
                     nome2 = scan.nextLine();
 
                     minhaAgenda.removerContato(nome2);
