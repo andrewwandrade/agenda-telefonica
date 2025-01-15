@@ -17,7 +17,6 @@ public class agenda{
         for(int i=0; i<contatos.size(); i++){
             infocontato pessoa = contatos.get(i);
             if(pessoa.getNome().equalsIgnoreCase(dados.getNome())){
-                pessoa.setNome(dados.getNome());
                 pessoa.setTelefone(dados.getTelefone());
                 pessoa.setEndereco(dados.getEndereco());
                 pessoa.setRelacao(dados.getRelacao());
@@ -103,7 +102,7 @@ public class agenda{
 
                     default:
                         System.out.println("\n[X] Opcao invalida!\n\n");
-                        break;
+                        return;
                 }
                 System.out.println("\nContato alterado!\n\n");
                 return;
@@ -120,7 +119,6 @@ public class agenda{
             for(int i=0; i<contatos.size(); i++){
                 infocontato pessoa = contatos.get(i);
                 System.out.println(pessoa.toString());
-                System.out.println("\n");
             }
         }    
     }
@@ -135,11 +133,10 @@ public class agenda{
     }
 
     public infocontato buscarPorNome(String nomeContato){
-        nomeContato = removerAcentos(nomeContato);  // Remover acentos do nome a ser buscado
+        nomeContato = removerAcentos(nomeContato); 
 
         for(int i=0; i<contatos.size(); i++){
             infocontato pessoa = contatos.get(i);
-            // Remover acentos também do nome do contato
             String nomeContatoSalvo = removerAcentos(pessoa.getNome());  
 
             if(nomeContatoSalvo.toLowerCase().contains(nomeContato.toLowerCase())){
@@ -175,7 +172,7 @@ public class agenda{
 
                 default:
                     System.out.println("\n[X] Digite uma opcao valida!\n");
-                    break;
+                    return;
             }
 
         }
@@ -188,6 +185,9 @@ public class agenda{
         File arquivo = new File ("dadosDaAgenda.txt");
 
         try(BufferedWriter escritor = new BufferedWriter(new FileWriter(arquivo))){
+
+            //FileWriter: abre o arquivo dadosDaAgenda.txt para escrita
+            //BufferedWriter: escreve o texto no arquivo
 
             for(int i=0; i<contatos.size(); i++){
                 infocontato pessoa = contatos.get(i);
@@ -211,6 +211,10 @@ public class agenda{
         File arquivo = new File ("dadosDaAgenda.txt");
 
         try(BufferedReader reader = new BufferedReader(new FileReader(arquivo))){
+
+            //BufferedReader: utilizado para ler o arquivo
+            //filereader: abre o arquivo "dadosDaAgenda.txt" para leitura
+
             String linhaDoArquivo;
             while((linhaDoArquivo = reader.readLine()) != null){
                 String[] dados = linhaDoArquivo.split(";");
